@@ -1,1 +1,1 @@
-This is my new repo file
+print("This is my new repo file")

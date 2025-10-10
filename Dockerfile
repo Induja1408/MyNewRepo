@@ -1,16 +1,8 @@
-FROM ubuntu:latest
+FROM python:3.11-slim
+WORKDIR /app
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+COPY repo.py .
+EXPOSE 8000
+CMD ["python","repo.py"]
 
-# Set the working directory in the image
-WORKDIR /repo
-
-# Copy the files from the host file system to the image file system
-COPY . /repo
-
-# Install the necessary packages
-RUN apt-get update && apt-get install -y python3 python3-pip
-
-# Set environment variables
-ENV NAME World
-
-# Run a command to start the application
-CMD ["python3", "repo.py"]
